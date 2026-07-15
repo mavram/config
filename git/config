@@ -1,0 +1,12 @@
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+[user]
+	name = mircea
+	email = mavram@gmail.com
+	signingkey = 7C30EC6B191663E3
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = master

@@ -1,0 +1,5 @@
+.DS_Store
+
+# zsh state
+zsh/.zsh_history
+zsh/.zsh_sessions/
