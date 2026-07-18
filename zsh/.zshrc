@@ -5,6 +5,8 @@ alias ll='ls -la'
 alias ch='cd ~'
 alias vim='nvim'
 alias vi='nvim'
+alias python='python3'
+alias pip='pip3'
 
 # Disable zsh's audible bell.
 unsetopt beep
