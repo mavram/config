@@ -3,6 +3,7 @@ export GPG_TTY="$(tty)"
 alias ll='ls -la'
 alias ch='cd ~'
 alias vim='nvim'
+alias vi='nvim'
 
 # Disable zsh's audible bell.
 unsetopt beep
