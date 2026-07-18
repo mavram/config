@@ -1,4 +1,5 @@
 export GPG_TTY="$(tty)"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 alias ll='ls -la'
 alias ch='cd ~'
