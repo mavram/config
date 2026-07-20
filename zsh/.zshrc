@@ -29,6 +29,12 @@ touch "$HISTFILE"
 export HISTSIZE=10000
 export SAVEHIST=10000
 
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+
 # Disable zsh's audible bell.
 unsetopt beep
 
