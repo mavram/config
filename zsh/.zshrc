@@ -15,7 +15,6 @@ mkdir -p "${XDG_STATE_HOME}"
 
 # Aliases
 alias ll='ls -la'
-alias ch='cd ~'
 alias vim='nvim'
 alias vi='nvim'
 alias python='python3'
@@ -35,9 +34,6 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
 
-# Disable zsh's audible bell.
-unsetopt beep
-
 # Use vi-style command-line editing.
 bindkey -v
 KEYTIMEOUT=1
@@ -52,3 +48,8 @@ function zle-line-init zle-keymap-select {
 
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+# Shell behaviour
+setopt AUTO_CD
+setopt NO_BEEP
+setopt NUMERIC_GLOB_SORT
