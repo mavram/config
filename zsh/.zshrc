@@ -1,12 +1,33 @@
 export GPG_TTY="$(tty)"
-export XDG_CONFIG_HOME="$HOME/.config"
+export EDITOR=nvim
+export VISUAL=nvim
 
+# XDG directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+mkdir -p "${XDG_CONFIG_HOME}"
+mkdir -p "${XDG_CACHE_HOME}"
+mkdir -p "${XDG_DATA_HOME}"
+mkdir -p "${XDG_STATE_HOME}"
+
+# Aliases
 alias ll='ls -la'
 alias ch='cd ~'
 alias vim='nvim'
 alias vi='nvim'
 alias python='python3'
 alias pip='pip3'
+
+# History
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+mkdir -p "${HISTFILE:h}"
+touch "$HISTFILE"
+
+export HISTSIZE=10000
+export SAVEHIST=10000
 
 # Disable zsh's audible bell.
 unsetopt beep
