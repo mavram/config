@@ -22,17 +22,18 @@ alias pip='pip3'
 
 # History
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
+
 mkdir -p "${HISTFILE:h}"
 touch "$HISTFILE"
 
 export HISTSIZE=10000
 export SAVEHIST=10000
 
-setopt APPEND_HISTORY
-setopt SHARE_HISTORY
-setopt HIST_IGNORE_DUPS
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_FIND_NO_DUPS
+setopt append_history
+setopt share_history
+setopt hist_ignore_dups
+setopt hist_expire_dups_first
+setopt hist_find_no_dups
 
 # Use vi-style command-line editing.
 bindkey -v
@@ -50,6 +51,6 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 # Shell behaviour
-setopt AUTO_CD
-setopt NO_BEEP
-setopt NUMERIC_GLOB_SORT
+setopt auto_cd
+setopt no_beep
+setopt numeric_glob_sort
