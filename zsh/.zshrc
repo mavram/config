@@ -85,3 +85,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matche
 
 # Fuzzy finder
 source <(fzf --zsh)
+
+# Prompt
+PROMPT='%F{244}%1~%f : '
