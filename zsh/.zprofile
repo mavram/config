@@ -1,3 +1,3 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export PATH="$PATH:$HOME/bin"
+export PATH="$HOME/.local/bin:$PATH"
