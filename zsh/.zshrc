@@ -91,3 +91,13 @@ PROMPT='%F{244}%1~%f : '
 
 # Disable less history
 export LESSHISTFILE=-
+
+# Pager
+# Use bat for man pages
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# Use bat anywhere programs respect $PAGER
+export PAGER="bat --paging=always -p"
+
+# Optional: make less itself nicer when it is still used
+export LESS="-R"
