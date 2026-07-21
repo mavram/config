@@ -11,11 +11,17 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.opt.inccommand = "nosplit"
 vim.opt.termguicolors = true
+vim.opt.scrolloff = 8
+vim.opt.incsearch = true
+vim.opt.signcolumn = "yes" 
+vim.opt.showmatch = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
 vim.opt.undofile = true
+
+vim.opt.autoread = true
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "move down in buffer with cursor centered" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor centered" })
@@ -27,5 +33,8 @@ vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit window" })
 vim.keymap.set("n", "<leader>e", ":Ex<CR>", { desc = "Open file explorer" })
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highlight" })
+
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
 
 vim.cmd("colorscheme catppuccin")
