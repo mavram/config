@@ -14,6 +14,8 @@ brew "bat"
 brew "tmux"
 # Improved top (interactive process viewer)
 brew "htop"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
 # Modern load testing tool, using Go and JavaScript
 brew "k6"
 # Find what models run on your hardware
