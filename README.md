@@ -3,6 +3,6 @@ Machine Configuration
 
 # TODO
 [ ] LSP for newovim
-[ ] Colorschem for neovim
+[x] Colorscheme for neovim
 [ ] Plugins manager
 [ ] ...
