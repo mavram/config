@@ -88,3 +88,6 @@ source <(fzf --zsh)
 
 # Prompt
 PROMPT='%F{244}%1~%f : '
+
+# Disable less history
+export LESSHISTFILE=-
