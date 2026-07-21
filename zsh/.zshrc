@@ -14,11 +14,25 @@ mkdir -p "${XDG_DATA_HOME}"
 mkdir -p "${XDG_STATE_HOME}"
 
 # Aliases
-alias ll='ls -la'
+alias ll='ls -la --color'
 alias vim='nvim'
 alias vi='nvim'
 alias python='python3'
 alias pip='pip3'
+
+# Extensions
+alias -s md=nvim
+alias -s txt=nvim
+alias -s json=nvim
+alias -s yaml=nvim
+alias -s yml=nvim
+alias -s lua=nvim
+alias -s sh=nvim
+alias -s zsh=nvim
+alias -s py=nvim
+alias -s go=nvim
+alias -s js=nvim
+alias -s jsx=nvim
 
 # History
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
@@ -70,7 +84,4 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
 
 # Fuzzy finder
-if [[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ]]; then
-  source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
-  source /opt/homebrew/opt/fzf/shell/completion.zsh
-fi
+source <(fzf --zsh)
