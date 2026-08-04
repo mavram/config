@@ -14,7 +14,7 @@ mkdir -p "${XDG_DATA_HOME}"
 mkdir -p "${XDG_STATE_HOME}"
 
 # Aliases
-alias ll='ls -la --color'
+alias ll='ls -lah --color'
 alias vim='nvim'
 alias vi='nvim'
 alias python='python3'
