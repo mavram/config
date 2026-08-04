@@ -14,7 +14,11 @@ mkdir -p "${XDG_DATA_HOME}"
 mkdir -p "${XDG_STATE_HOME}"
 
 # Aliases
-alias ll='ls -lah --color'
+if [[ "$OSTYPE" == darwin* ]]; then
+  alias ll='ls -lahG'
+else
+  alias ll='ls -lah --color=auto'
+fi
 alias vim='nvim'
 alias vi='nvim'
 alias python='python3'
@@ -85,7 +89,9 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
 
 # Fuzzy finder
-source <(fzf --zsh)
+if command -v fzf >/dev/null 2>&1; then
+  source <(fzf --zsh)
+fi
 
 # Prompt
 PROMPT='%F{244}%1~%f : '
