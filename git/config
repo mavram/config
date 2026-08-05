@@ -5,7 +5,9 @@
 [user]
 	name = mircea
 	email = mavram@gmail.com
-	signingkey = 7C30EC6B191663E3
+    signingkey = ~/.ssh/id_rsa.pub
+[gpg]
+    format = ssh
 [commit]
 	gpgsign = true
 [init]
