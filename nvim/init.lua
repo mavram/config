@@ -16,6 +16,25 @@ vim.opt.incsearch = true
 vim.opt.signcolumn = "yes" 
 vim.opt.showmatch = true
 
+-- Use colors from the active colorscheme instead of the terminal cursor color.
+vim.opt.guicursor = {
+    "n-v-c:block-Cursor/lCursor",
+    "i-ci-ve:ver25-Cursor/lCursor",
+    "r-cr-o:block-Cursor/lCursor",
+}
+
+local function set_cursor_color()
+    local normal = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
+    vim.api.nvim_set_hl(0, "Cursor", {
+        fg = normal.bg,
+        bg = normal.fg,
+    })
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+    callback = set_cursor_color,
+})
+
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
@@ -38,3 +57,4 @@ vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
 
 vim.cmd("colorscheme catppuccin")
+set_cursor_color()
