@@ -1,4 +1,6 @@
-export GPG_TTY="$(tty)"
+if [[ -t 0 ]]; then
+  export GPG_TTY="$(tty)"
+fi
 export EDITOR=nvim
 export VISUAL=nvim
 
@@ -8,21 +10,12 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-mkdir -p "${XDG_CONFIG_HOME}"
-mkdir -p "${XDG_CACHE_HOME}"
-mkdir -p "${XDG_DATA_HOME}"
-mkdir -p "${XDG_STATE_HOME}"
-
 # Aliases
-if [[ "$OSTYPE" == darwin* ]]; then
-  alias ll='ls -lahG'
-else
-  alias ll='ls -lah --color=auto'
-fi
+alias ll='ls -lahG'
 alias vim='nvim'
 alias vi='nvim'
 alias python='python3'
-alias pip='pip3'
+alias pip='pyhton -m pip'
 
 # Extensions
 alias -s md=nvim
@@ -40,8 +33,7 @@ alias -s conf=nvim
 # History
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 
-mkdir -p "${HISTFILE:h}"
-touch "$HISTFILE"
+mkdir -p "${HISTFILE:h}" "$XDG_CACHE_HOME/zsh"
 
 export HISTSIZE=10000
 export SAVEHIST=10000
@@ -101,8 +93,10 @@ export LESSHISTFILE=-
 # Use bat for man pages
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-# Use bat anywhere programs respect $PAGER
-export PAGER="bat --paging=always -p"
+# Use a broadly compatible pager command, with color support and clean exits.
+export PAGER=less
+export GIT_PAGER=less
+export BAT_PAGER='less -FRX'
 
 # Optional: make less itself nicer when it is still used
-export LESS="-R"
+export LESS="-FRX"
