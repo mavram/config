@@ -18,9 +18,9 @@ vim.opt.showmatch = true
 
 -- Use colors from the active colorscheme instead of the terminal cursor color.
 vim.opt.guicursor = {
-              "n-v-c:block-Cursor/lCursor",
-              "i-ci-ve:ver25-Cursor/lCursor",
-              "r-cr-o:block-Cursor/lCursor",
+    "n-v-c:block-Cursor/lCursor",
+    "i-ci-ve:ver25-Cursor/lCursor",
+    "r-cr-o:block-Cursor/lCursor",
 }
 
 local function set_cursor_color()
@@ -28,7 +28,7 @@ local function set_cursor_color()
     vim.api.nvim_set_hl(0, "Cursor", {
         fg = normal.bg,
         bg = normal.fg,
-              })
+    })
 end
 
 vim.api.nvim_create_autocmd("ColorScheme", {
