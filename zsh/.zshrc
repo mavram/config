@@ -15,7 +15,7 @@ alias ll='ls -lahG'
 alias vim='nvim'
 alias vi='nvim'
 alias python='python3'
-alias pip='pyhton -m pip'
+alias pip='python3 -m pip'
 
 # Extensions
 alias -s md=nvim
@@ -41,9 +41,12 @@ export SAVEHIST=10000
 
 setopt append_history
 setopt share_history
-setopt hist_ignore_dups
+setopt extended_history
+setopt hist_ignore_all_dups
 setopt hist_expire_dups_first
 setopt hist_find_no_dups
+setopt hist_reduce_blanks
+setopt hist_verify
 
 # Use vi-style command-line editing.
 bindkey -v
@@ -57,8 +60,13 @@ function zle-line-init zle-keymap-select {
   esac
 }
 
+function zle-line-finish {
+  print -n '\e[2 q'
+}
+
 zle -N zle-line-init
 zle -N zle-keymap-select
+zle -N zle-line-finish
 
 # Shell behaviour
 setopt auto_cd
@@ -70,7 +78,7 @@ setopt numeric_glob_sort
 autoload -Uz compinit
 
 # Initialize completion with cached metadata file
-compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
+compinit -C -d "$XDG_CACHE_HOME/zsh/zcompdump"
 
 # Enable interactive completion menu selection
 zstyle ':completion:*' menu select
@@ -91,8 +99,10 @@ PROMPT='%F{244}%1~%f : '
 export LESSHISTFILE=-
 
 # Pager
-# Use bat for man pages
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# Use bat for man pages when the required commands are available
+if (( $+commands[bat] && $+commands[col] )); then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
 
 # Use a broadly compatible pager command, with color support and clean exits.
 export PAGER=less
