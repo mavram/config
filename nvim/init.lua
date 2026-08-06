@@ -16,7 +16,6 @@ vim.opt.incsearch = true
 vim.opt.signcolumn = "yes" 
 vim.opt.showmatch = true
 
--- Use colors from the active colorscheme instead of the terminal cursor color.
 vim.opt.guicursor = {
     "n-v-c:block-Cursor/lCursor",
     "i-ci-ve:ver25-Cursor/lCursor",
@@ -42,7 +41,6 @@ vim.opt.undofile = true
 
 vim.opt.autoread = true
 
--- Automatically enter insert mode when a terminal buffer opens
 vim.api.nvim_create_autocmd("TermOpen", {
     callback = function()
         vim.cmd("startinsert")
