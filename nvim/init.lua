@@ -18,9 +18,9 @@ vim.opt.showmatch = true
 
 -- Use colors from the active colorscheme instead of the terminal cursor color.
 vim.opt.guicursor = {
-       "n-v-c:block-Cursor/lCursor",
-       "i-ci-ve:ver25-Cursor/lCursor",
-       "r-cr-o:block-Cursor/lCursor",
+           "n-v-c:block-Cursor/lCursor",
+           "i-ci-ve:ver25-Cursor/lCursor",
+           "r-cr-o:block-Cursor/lCursor",
 }
 
 local function set_cursor_color()
@@ -28,7 +28,7 @@ local function set_cursor_color()
     vim.api.nvim_set_hl(0, "Cursor", {
         fg = normal.bg,
         bg = normal.fg,
-       })
+           })
 end
 
 vim.api.nvim_create_autocmd("ColorScheme", {
@@ -41,6 +41,13 @@ vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
 vim.opt.undofile = true
 
 vim.opt.autoread = true
+
+-- Automatically enter insert mode when a terminal buffer opens
+vim.api.nvim_create_autocmd("TermOpen", {
+    callback = function()
+        vim.cmd("startinsert")
+    end,
+})
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "move down in buffer with cursor centered" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor centered" })
@@ -55,12 +62,11 @@ vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highl
 
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
-vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>bd", ":bd!<CR>", { desc = "Close buffer" })
 
-vim.keymap.set("n", "<leader>t", ":split | terminal<CR>", { desc = "Open terminal split" })
-vim.keymap.set("t", "<leader>c", "<C-\\><C-n>:close<CR>", { desc = "Escape and close terminal" })
+vim.keymap.set("n", "<leader>t", ":split | terminal<CR>", { desc = "Open terminal split (auto-insert)" })
+vim.keymap.set("t", "<leader>c", "<C-\\><C-n>:bd!<CR>", { desc = "Escape, close and delete terminal buffer" })
 
--- Reload config with <space>R
 vim.keymap.set("n", "<leader>r", function()
     vim.cmd("source " .. vim.fn.stdpath("config") .. "/init.lua")
     print("Config reloaded!")
