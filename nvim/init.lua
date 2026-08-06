@@ -18,9 +18,9 @@ vim.opt.showmatch = true
 
 -- Use colors from the active colorscheme instead of the terminal cursor color.
 vim.opt.guicursor = {
-           "n-v-c:block-Cursor/lCursor",
-           "i-ci-ve:ver25-Cursor/lCursor",
-           "r-cr-o:block-Cursor/lCursor",
+              "n-v-c:block-Cursor/lCursor",
+              "i-ci-ve:ver25-Cursor/lCursor",
+              "r-cr-o:block-Cursor/lCursor",
 }
 
 local function set_cursor_color()
@@ -28,7 +28,7 @@ local function set_cursor_color()
     vim.api.nvim_set_hl(0, "Cursor", {
         fg = normal.bg,
         bg = normal.fg,
-           })
+              })
 end
 
 vim.api.nvim_create_autocmd("ColorScheme", {
@@ -62,10 +62,10 @@ vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highl
 
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
-vim.keymap.set("n", "<leader>bd", ":bd!<CR>", { desc = "Close buffer" })
-
-vim.keymap.set("n", "<leader>t", ":split | terminal<CR>", { desc = "Open terminal split (auto-insert)" })
-vim.keymap.set("t", "<leader>c", "<C-\\><C-n>:bd!<CR>", { desc = "Escape, close and delete terminal buffer" })
+vim.keymap.set("n", "<leader>bl", ":ls<CR>", { desc = "List buffers" })
+vim.keymap.set("n", "<leader>bd", ":bd!<CR>", { desc = "Delete buffer" })
+vim.keymap.set("n", "<leader>bt", ":split | terminal<CR>", { desc = "Open terminal buffer as split (with auto-insert)" })
+vim.keymap.set("t", "<leader>bd", "<C-\\><C-n>:bd!<CR>", { desc = "Escape and delete terminal buffer" })
 
 vim.keymap.set("n", "<leader>r", function()
     vim.cmd("source " .. vim.fn.stdpath("config") .. "/init.lua")
