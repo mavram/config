@@ -9,3 +9,5 @@ trust.json.lock
 # zsh state
 zsh/.zsh_history
 zsh/.zsh_sessions/
+htop
+htop
