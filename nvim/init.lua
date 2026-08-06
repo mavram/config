@@ -52,13 +52,11 @@ vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit window" })
 vim.keymap.set("n", "<leader>e", ":Ex<CR>", { desc = "Open file explorer" })
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highlight" })
+
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
 
--- Terminal in a horizontal split at the bottom
 vim.keymap.set("n", "<leader>tt", ":split | terminal<CR>", { desc = "Open terminal split" })
-
--- Escape from terminal mode, then close the window (one key press)
 vim.keymap.set("t", "<leader>tc", "<C-\\><C-n>:close<CR>", { desc = "Escape and close terminal" })
 
 -- Reload config with <space>R
