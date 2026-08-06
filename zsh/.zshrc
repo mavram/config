@@ -29,6 +29,7 @@ alias -s go=nvim
 alias -s js=nvim
 alias -s jsx=nvim
 alias -s conf=nvim
+alias -s plist=nvim
 
 # History
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
