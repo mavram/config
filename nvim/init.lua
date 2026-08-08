@@ -52,11 +52,11 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor 
 
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result cursor centered" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result cursor centered" })
+vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highlight" })
 
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit window" })
 vim.keymap.set("n", "<leader>e", ":Ex<CR>", { desc = "Open file explorer" })
-vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highlight" })
 
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
