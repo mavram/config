@@ -17,12 +17,10 @@ vim.opt.scrolloff = 8
 vim.opt.incsearch = true
 vim.opt.signcolumn = "yes" 
 vim.opt.showmatch = true
-
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
 vim.opt.undofile = true
-
 vim.opt.autoread = true
 
 vim.api.nvim_create_autocmd("TermOpen", {
@@ -45,4 +43,3 @@ vim.keymap.set("n", "<leader>r", function()
     vim.cmd("source " .. vim.fn.stdpath("config") .. "/init.lua")
     print("Config reloaded!")
 end, { desc = "Reload init.lua" })
-
