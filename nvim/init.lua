@@ -36,8 +36,8 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result cursor centered" 
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result cursor centered" })
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highlight" })
 
-vim.keymap.set("n", "<leader>bt", ":split | terminal<CR>", { desc = "Open terminal buffer as split (with auto-insert)" })
-vim.keymap.set("t", "<leader>bd", "<C-\\><C-n>:bd!<CR>", { desc = "Escape and delete terminal buffer" })
+vim.keymap.set("n", "<leader>t", ":split | terminal<CR>", { desc = "Open terminal buffer as split (with auto-insert)" })
+vim.keymap.set("t", "<leader>t", "<C-\\><C-n>:bd!<CR>", { desc = "Escape and delete terminal buffer" })
 
 vim.keymap.set("n", "<leader>r", function()
     vim.cmd("source " .. vim.fn.stdpath("config") .. "/init.lua")
