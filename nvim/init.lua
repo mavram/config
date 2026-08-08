@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.netrw_banner = 0
 
+require("config.lazy")
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.expandtab = true
@@ -15,24 +17,6 @@ vim.opt.scrolloff = 8
 vim.opt.incsearch = true
 vim.opt.signcolumn = "yes" 
 vim.opt.showmatch = true
-
-vim.opt.guicursor = {
-    "n-v-c:block-Cursor/lCursor",
-    "i-ci-ve:ver25-Cursor/lCursor",
-    "r-cr-o:block-Cursor/lCursor",
-}
-
-local function set_cursor_color()
-    local normal = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
-    vim.api.nvim_set_hl(0, "Cursor", {
-        fg = normal.bg,
-        bg = normal.fg,
-    })
-end
-
-vim.api.nvim_create_autocmd("ColorScheme", {
-    callback = set_cursor_color,
-})
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -54,14 +38,6 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result cursor centered" 
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result cursor centered" })
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highlight" })
 
-vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
-vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit window" })
-vim.keymap.set("n", "<leader>e", ":Ex<CR>", { desc = "Open file explorer" })
-
-vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
-vim.keymap.set("n", "<leader>bl", ":ls<CR>", { desc = "List buffers" })
-vim.keymap.set("n", "<leader>bd", ":bd!<CR>", { desc = "Delete buffer" })
 vim.keymap.set("n", "<leader>bt", ":split | terminal<CR>", { desc = "Open terminal buffer as split (with auto-insert)" })
 vim.keymap.set("t", "<leader>bd", "<C-\\><C-n>:bd!<CR>", { desc = "Escape and delete terminal buffer" })
 
@@ -70,5 +46,3 @@ vim.keymap.set("n", "<leader>r", function()
     print("Config reloaded!")
 end, { desc = "Reload init.lua" })
 
-vim.cmd("colorscheme catppuccin")
-set_cursor_color()
