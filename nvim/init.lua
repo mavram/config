@@ -1,45 +1,6 @@
 vim.g.mapleader = " "
-vim.g.netrw_banner = 0
 
 require("config.lazy")
-
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.smartindent = true
-vim.opt.wrap = false
-vim.opt.inccommand = "nosplit"
-vim.opt.termguicolors = true
-vim.opt.scrolloff = 8
-vim.opt.incsearch = true
-vim.opt.signcolumn = "yes" 
-vim.opt.showmatch = true
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
-vim.opt.undofile = true
-vim.opt.autoread = true
-
-vim.api.nvim_create_autocmd("TermOpen", {
-    callback = function()
-        vim.cmd("startinsert")
-    end,
-})
-
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "move down in buffer with cursor centered" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor centered" })
-
-vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result cursor centered" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result cursor centered" })
-vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highlight" })
-
-vim.keymap.set("n", "<leader>t", ":split | terminal<CR>", { desc = "Open terminal buffer as split (with auto-insert)" })
-vim.keymap.set("t", "<leader>t", "<C-\\><C-n>:bd!<CR>", { desc = "Escape and delete terminal buffer" })
-
-vim.keymap.set("n", "<leader>r", function()
-    vim.cmd("source " .. vim.fn.stdpath("config") .. "/init.lua")
-    print("Config reloaded!")
-end, { desc = "Reload init.lua" })
+require("config.autocmds")
+require("config.opts")
+require("config.keymaps")
