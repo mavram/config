@@ -149,16 +149,14 @@ vim.pack.add({
     {src = 'https://github.com/nvim-mini/mini-git'},
     {src = 'https://github.com/nvim-mini/mini.statusline'},
     {src = 'https://github.com/nvim-mini/mini.pick'},
-    {src = 'https://github.com/stevearc/oil.nvim'},
     {src = 'https://github.com/neovim/nvim-lspconfig'},
 })
 
-require('mini.diff').setup({})
-require('mini.icons').setup({})
-require('mini.git').setup({})
-require('mini.statusline').setup({})
-require('mini.pick').setup({})
-require('oil').setup({})
+require('mini.diff').setup()
+require('mini.icons').setup()
+require('mini.git').setup()
+require('mini.statusline').setup()
+require('mini.pick').setup()
 
 -- Apply settings
 vim.cmd.colorscheme('vague')
