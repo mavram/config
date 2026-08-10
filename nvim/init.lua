@@ -97,6 +97,9 @@ vim.o.undodir = vim.fn.stdpath('data') .. '/undodir'
 -- clipboard, enabling cross-application copy/paste.
 vim.o.swapfile = false
 
+-- Defines the style of floating windows. e.g. when hovering on types for definitions
+vim.o.winborder = 'rounded'
+
 
 -- Auto commands
 vim.api.nvim_create_autocmd('TermOpen', {
@@ -126,7 +129,8 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'move up in buffer with cursor 
 
 vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result cursor centered' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result cursor centered' })
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>', { desc = 'Clear search highlight' })
+vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Browse help' })
+vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { desc = 'Browse files' })
 
 vim.keymap.set('n', '<leader>t', ':split | terminal<CR>', { desc = 'Open terminal buffer as split (with auto-insert)' })
 vim.keymap.set('t', '<leader>t', '<C-\\><C-n>:bd!<CR>', { desc = 'Escape and delete terminal buffer' })
@@ -145,6 +149,8 @@ vim.pack.add({
     {src = 'https://github.com/nvim-mini/mini-git'},
     {src = 'https://github.com/nvim-mini/mini.statusline'},
     {src = 'https://github.com/nvim-mini/mini.pick'},
+    {src = 'https://github.com/stevearc/oil.nvim'},
+    {src = 'https://github.com/neovim/nvim-lspconfig'},
 })
 
 require('mini.diff').setup({})
@@ -152,6 +158,7 @@ require('mini.icons').setup({})
 require('mini.git').setup({})
 require('mini.statusline').setup({})
 require('mini.pick').setup({})
+require('oil').setup({})
 
 -- Apply settings
 vim.cmd.colorscheme('vague')
