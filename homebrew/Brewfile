@@ -32,3 +32,5 @@ cask "codex"
 brew "go"
 # Render markdown on the CLI
 brew "glow"
+# Opinionated Lua code formatter
+brew "stylua"
