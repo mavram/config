@@ -153,11 +153,6 @@ vim.keymap.set('n', '<leader>g', ':Pick grep_live<CR>', { desc = 'Search text' }
 vim.keymap.set('n', '<leader>t', ':split | terminal<CR>', { desc = 'Open terminal buffer as split (with auto-insert)' })
 vim.keymap.set('t', '<leader>t', '<C-\\><C-n>:bd!<CR>', { desc = 'Escape and delete terminal buffer' })
 
-vim.keymap.set('n', '<leader>r', function()
-    vim.cmd('source ' .. vim.fn.stdpath('config') .. '/init.lua')
-    print('Config reloaded!')
-end, { desc = 'Reload init.lua' })
-
 
 -- Plugins
 vim.pack.add({
@@ -167,6 +162,7 @@ vim.pack.add({
     {src = 'https://github.com/nvim-mini/mini-git'},
     {src = 'https://github.com/nvim-mini/mini.statusline'},
     {src = 'https://github.com/nvim-mini/mini.pick'},
+    -- AST plugins
     -- LSP plugins
     {src = 'https://github.com/neovim/nvim-lspconfig'},
 })
