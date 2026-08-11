@@ -145,6 +145,7 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'move up in buffer with cursor 
 
 vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result cursor centered' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result cursor centered' })
+
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Browse help' })
 vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { desc = 'Browse files' })
 
