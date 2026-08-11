@@ -92,12 +92,12 @@ vim.o.confirm = true
 -- history is persisted independently per buffer.
 vim.o.undodir = vim.fn.stdpath('data') .. '/undodir'
 
--- Schedule clipboard sync on the main event loop so that any
--- yanked or pasted text is also available in the system
--- clipboard, enabling cross-application copy/paste.
-vim.o.swapfile = false
+-- Clipboard setting so that any yanked or pasted text is also available
+-- in the system clipboard, enabling cross-application copy/paste.
+vim.o.clipboard = 'unnamedplus'
 
--- Defines the style of floating windows. e.g. when hovering on types for definitions
+-- Defines the style of floating windows. e.g. when hovering on types
+-- for definitions
 vim.o.winborder = 'rounded'
 
 -- Controls splitting window positioning
