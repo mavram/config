@@ -34,3 +34,9 @@ brew "go"
 brew "glow"
 # Opinionated Lua code formatter
 brew "stylua"
+# TOML toolkit written in Rust
+brew "taplo"
+# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
+brew "prettier"
+# Python code formatter
+brew "black"

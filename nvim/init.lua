@@ -130,7 +130,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
-
 -- Key bindings
 -- TIP: Disable arrow keys in normal mode
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -153,15 +152,14 @@ vim.keymap.set('n', '<leader>g', ':Pick grep_live<CR>', { desc = 'Search text' }
 vim.keymap.set('n', '<leader>t', ':split | terminal<CR>', { desc = 'Open terminal buffer as split (with auto-insert)' })
 vim.keymap.set('t', '<leader>t', '<C-\\><C-n>:bd!<CR>', { desc = 'Escape and delete terminal buffer' })
 
-
 -- Plugins
 vim.pack.add({
     -- Selected mini plugins
-    {src = 'https://github.com/nvim-mini/mini.diff'},
-    {src = 'https://github.com/nvim-mini/mini.icons'},
-    {src = 'https://github.com/nvim-mini/mini-git'},
-    {src = 'https://github.com/nvim-mini/mini.statusline'},
-    {src = 'https://github.com/nvim-mini/mini.pick'},
+    { src = 'https://github.com/nvim-mini/mini.diff' },
+    { src = 'https://github.com/nvim-mini/mini.icons' },
+    { src = 'https://github.com/nvim-mini/mini-git' },
+    { src = 'https://github.com/nvim-mini/mini.statusline' },
+    { src = 'https://github.com/nvim-mini/mini.pick' },
     -- AST plugins
     -- LSP plugins
     --{src = 'https://github.com/neovim/nvim-lspconfig'},
@@ -173,74 +171,72 @@ require('mini.git').setup()
 require('mini.statusline').setup()
 require('mini.pick').setup()
 
-
 -- Formats the whole buffer by piping it through an external CLI tool on
 -- stdin/stdout, keyed by filetype. No formatting plugin required.
 -- brew install stylua black taplo prettier
 local formatters = {
-                lua = function()
-                                return { "stylua", "-" }
-                end,
-                python = function()
-                                return { "black", "-q", "-" }
-                end,
-                javascript = function()
-                                return { "prettier", "--stdin-filepath", vim.fn.expand("%") }
-                end,
-                javascriptreact = function()
-                                return { "prettier", "--stdin-filepath", vim.fn.expand("%") }
-                end,
-                typescript = function()
-                                return { "prettier", "--stdin-filepath", vim.fn.expand("%") }
-                end,
-                typescriptreact = function()
-                                return { "prettier", "--stdin-filepath", vim.fn.expand("%") }
-                end,
-                css = function()
-                                return { "prettier", "--stdin-filepath", vim.fn.expand("%") }
-                end,
-                html = function()
-                                return { "prettier", "--stdin-filepath", vim.fn.expand("%") }
-                end,
-                yaml = function()
-                                return { "prettier", "--stdin-filepath", vim.fn.expand("%") }
-                end,
-                toml = function()
-                                return { "taplo", "format", "-" }
-                end,
-                go = function()
-                                return { "gofmt" }
-                end,
+    lua = function()
+        return { 'stylua', '-' }
+    end,
+    python = function()
+        return { 'black', '-q', '-' }
+    end,
+    javascript = function()
+        return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
+    end,
+    javascriptreact = function()
+        return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
+    end,
+    typescript = function()
+        return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
+    end,
+    typescriptreact = function()
+        return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
+    end,
+    css = function()
+        return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
+    end,
+    html = function()
+        return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
+    end,
+    yaml = function()
+        return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
+    end,
+    toml = function()
+        return { 'taplo', 'format', '-' }
+    end,
+    go = function()
+        return { 'gofmt' }
+    end,
 }
- 
+
 local function format_buffer()
-                local ft = vim.bo.filetype
-                local get_cmd = formatters[ft]
-                if not get_cmd then
-                                vim.notify("No formatter configured for filetype: " .. ft, vim.log.levels.WARN)
-                                return
-                end
- 
-                local cmd = get_cmd()
-                if vim.fn.executable(cmd[1]) == 0 then
-                                vim.notify("Formatter not found on PATH: " .. cmd[1], vim.log.levels.ERROR)
-                                return
-                end
- 
-                local view = vim.fn.winsaveview()
-                local input = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), "\n") .. "\n"
-                local result = vim.system(cmd, { stdin = input, text = true }):wait()
-                if result.code ~= 0 then
-                                vim.notify("Format failed:\n" .. (result.stderr or ""), vim.log.levels.ERROR)
-                                return
-                end
- 
-                vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(result.stdout:gsub("\n$", ""), "\n"))
-                vim.fn.winrestview(view)
+    local ft = vim.bo.filetype
+    local get_cmd = formatters[ft]
+    if not get_cmd then
+        vim.notify('No formatter configured for filetype: ' .. ft, vim.log.levels.WARN)
+        return
+    end
+
+    local cmd = get_cmd()
+    if vim.fn.executable(cmd[1]) == 0 then
+        vim.notify('Formatter not found on PATH: ' .. cmd[1], vim.log.levels.ERROR)
+        return
+    end
+
+    local view = vim.fn.winsaveview()
+    local input = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n') .. '\n'
+    local result = vim.system(cmd, { stdin = input, text = true }):wait()
+    if result.code ~= 0 then
+        vim.notify('Format failed:\n' .. (result.stderr or ''), vim.log.levels.ERROR)
+        return
+    end
+
+    vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(result.stdout:gsub('\n$', ''), '\n'))
+    vim.fn.winrestview(view)
 end
 
-vim.keymap.set("n", "<leader>lf", format_buffer, { desc = "Format buffer" })
-
+vim.keymap.set('n', '<leader>lf', format_buffer, { desc = 'Format buffer' })
 
 -- Apply settings
 vim.cmd.colorscheme('catppuccin')
