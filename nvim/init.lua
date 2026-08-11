@@ -1,4 +1,6 @@
 vim.g.mapleader = ' '
+
+-- Enable Nerd fonts
 vim.g.have_nerd_font = true
 
 -- Show line numbers in the left margin.
@@ -72,8 +74,6 @@ vim.o.showmatch = true
 -- Disable swap files (.swp) to avoid clutter and conflicts
 -- with version-control systems like Git.
 vim.o.swapfile = false
-
--- Disable backup files (~) to keep the working directory clean.
 vim.o.backup = false
 
 -- Store undo history in a file so it persists across Neovim
@@ -100,6 +100,20 @@ vim.o.swapfile = false
 -- Defines the style of floating windows. e.g. when hovering on types for definitions
 vim.o.winborder = 'rounded'
 
+-- Controls splitting window positioning
+vim.o.splitbelow = true
+vim.o.splitright = true
+
+-- Case insensitive search, and override if search patten
+-- contains upper case characters
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Only, and always, last window will have a status line
+vim.o.laststatus = 3
+
+-- Auto-hide command line
+vim.o.cmdheight = 0
 
 -- Auto commands
 vim.api.nvim_create_autocmd('TermOpen', {
@@ -124,6 +138,8 @@ vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
+vim.keymap.set('x', 'p', [['_dP]], { desc = 'Paste over selection WITHOUT losing yanked text' })
+
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'move down in buffer with cursor centered' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'move up in buffer with cursor centered' })
 
@@ -143,12 +159,13 @@ end, { desc = 'Reload init.lua' })
 
 -- Plugins
 vim.pack.add({
-    {src = 'https://github.com/vague-theme/vague.nvim'},
+    -- Selected mini plugins
     {src = 'https://github.com/nvim-mini/mini.diff'},
     {src = 'https://github.com/nvim-mini/mini.icons'},
     {src = 'https://github.com/nvim-mini/mini-git'},
     {src = 'https://github.com/nvim-mini/mini.statusline'},
     {src = 'https://github.com/nvim-mini/mini.pick'},
+    -- LSP plugins
     {src = 'https://github.com/neovim/nvim-lspconfig'},
 })
 
@@ -159,4 +176,4 @@ require('mini.statusline').setup()
 require('mini.pick').setup()
 
 -- Apply settings
-vim.cmd.colorscheme('vague')
+vim.cmd.colorscheme('catppuccin')
