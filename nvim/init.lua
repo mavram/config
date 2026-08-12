@@ -91,7 +91,7 @@ require('mini.pick').setup()
 
 -- Native LSP using server definitions from nvim-lspconfig
 vim.lsp.enable({
-    'ts_ls',
+    'tsgo',
     'eslint',
     'gopls',
     'html',
