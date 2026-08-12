@@ -199,6 +199,9 @@ local formatters = {
     html = function()
         return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
     end,
+    json = function()
+        return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
+    end,
     yaml = function()
         return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
     end,
