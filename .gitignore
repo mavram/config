@@ -6,7 +6,7 @@
 # brew state
 trust.json.lock
 
-zsh
 htop
 htop
 glow
+zsh/.zsh_sessions

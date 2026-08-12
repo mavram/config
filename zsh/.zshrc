@@ -1,5 +1,5 @@
 if [[ -t 0 ]]; then
-  export GPG_TTY="$(tty)"
+    export GPG_TTY="$(tty)"
 fi
 export EDITOR=nvim
 export VISUAL=nvim
@@ -54,14 +54,14 @@ KEYTIMEOUT=1
 
 # Show zsh's current vi editing mode with the cursor shape.
 function zle-line-init zle-keymap-select {
-  case $KEYMAP in
+    case $KEYMAP in
     vicmd) echo -ne '\e[2 q' ;; # block cursor
-    *)     echo -ne '\e[6 q' ;; # line cursor
-  esac
+    *) echo -ne '\e[6 q' ;;     # line cursor
+    esac
 }
 
 function zle-line-finish {
-  print -n '\e[2 q'
+    print -n '\e[2 q'
 }
 
 zle -N zle-line-init
@@ -85,11 +85,11 @@ zstyle ':completion:*' menu select
 
 # Make completion case-insensitive
 # Example: "doc" can complete to "Documents"
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # lowercase input matches upper and lower
 
 # Fuzzy finder
 if command -v fzf >/dev/null 2>&1; then
-  source <(fzf --zsh)
+    source <(fzf --zsh)
 fi
 
 # Prompt
@@ -100,8 +100,8 @@ export LESSHISTFILE=-
 
 # Pager
 # Use bat for man pages when the required commands are available
-if (( $+commands[bat] && $+commands[col] )); then
-  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+if (($+commands[bat] && $+commands[col])); then
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
 # Use a broadly compatible pager command, with color support and clean exits.
