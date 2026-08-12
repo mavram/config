@@ -171,6 +171,7 @@ require('mini.git').setup()
 require('mini.statusline').setup()
 require('mini.pick').setup()
 
+-- Configure formatters
 -- Formats the whole buffer by piping it through an external CLI tool on
 -- stdin/stdout, keyed by filetype. No formatting plugin required.
 -- brew install stylua black taplo prettier
@@ -240,6 +241,14 @@ local function format_buffer()
 end
 
 vim.keymap.set('n', '<leader>lf', format_buffer, { desc = 'Format buffer' })
+
+-- Auto-format on save
+vim.api.nvim_create_autocmd('BufWritePre', {
+    group = vim.api.nvim_create_augroup('autoformat_on_save', { clear = true }),
+    callback = function()
+        format_buffer()
+    end,
+})
 
 -- Apply settings
 vim.cmd.colorscheme('catppuccin')
