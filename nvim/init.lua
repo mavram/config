@@ -203,6 +203,9 @@ local formatters = {
     json = function()
         return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
     end,
+    markdown = function()
+        return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
+    end,
     yaml = function()
         return { 'prettier', '--stdin-filepath', vim.fn.expand('%') }
     end,
