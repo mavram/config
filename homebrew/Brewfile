@@ -40,3 +40,5 @@ brew "taplo"
 brew "prettier"
 # Python code formatter
 brew "black"
+# Language server for the Go language
+brew "gopls"

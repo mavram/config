@@ -74,12 +74,12 @@ vim.keymap.set('t', '<leader>t', '<C-\\><C-n>:bd!<CR>', { desc = 'Escape and del
 
 -- Plugins
 vim.pack.add({
-    -- Selected mini plugins
     { src = 'https://github.com/nvim-mini/mini.diff' },
     { src = 'https://github.com/nvim-mini/mini.icons' },
     { src = 'https://github.com/nvim-mini/mini-git' },
     { src = 'https://github.com/nvim-mini/mini.statusline' },
     { src = 'https://github.com/nvim-mini/mini.pick' },
+    { src = 'https://github.com/neovim/nvim-lspconfig' },
 })
 
 require('mini.diff').setup()
@@ -87,6 +87,27 @@ require('mini.icons').setup()
 require('mini.git').setup()
 require('mini.statusline').setup()
 require('mini.pick').setup()
+
+-- Native LSP using server definitions from nvim-lspconfig
+vim.lsp.enable({
+    'ts_ls',
+    'eslint',
+    'gopls',
+    'html',
+    'cssls',
+    'tailwindcss',
+    'pyright',
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('native-lsp', { clear = true }),
+    callback = function(event)
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if client and client:supports_method('textDocument/completion') then
+            vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+        end
+    end,
+})
 
 -- Configure formatters
 -- Formats the whole buffer by piping it through an external CLI tool on
