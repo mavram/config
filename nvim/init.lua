@@ -125,6 +125,12 @@ local formatters = {
     python = function()
         return { 'black', '-q', '-' }
     end,
+    sh = function()
+        return { 'shfmt', '--language-dialect', 'auto', '--indent', '4', '-' }
+    end,
+    zsh = function()
+        return { 'shfmt', '--language-dialect', 'zsh', '--indent', '4', '-' }
+    end,
     javascript = prettier,
     javascriptreact = prettier,
     typescript = prettier,

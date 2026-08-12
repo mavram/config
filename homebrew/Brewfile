@@ -42,3 +42,5 @@ brew "prettier"
 brew "black"
 # Language server for the Go language
 brew "gopls"
+# Autoformat shell script source code
+brew "shfmt"
