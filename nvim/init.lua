@@ -17,6 +17,7 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.laststatus = 3
 vim.o.cmdheight = 0
+vim.o.wrap = false
 
 -- Indentation
 vim.o.expandtab = true
