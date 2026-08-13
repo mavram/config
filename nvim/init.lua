@@ -59,12 +59,11 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move up in buffer with cursor 
 vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result cursor centered' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result cursor centered' })
 
-vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { desc = 'Search help tags' })
-vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { desc = 'Search files' })
-vim.keymap.set('n', '<leader>g', ':Pick grep_live<CR>', { desc = 'Search text' })
+vim.keymap.set('n', '<leader>ff', ':Pick files<CR>', { desc = 'Search files' })
+vim.keymap.set('n', '<leader>gg', ':Pick grep_live<CR>', { desc = 'Search text' })
 
-vim.keymap.set('n', '<leader>t', ':split | terminal<CR>', { desc = 'Open terminal buffer as split (with auto-insert)' })
-vim.keymap.set('t', '<leader>t', '<C-\\><C-n>:bd!<CR>', { desc = 'Escape and delete terminal buffer' })
+vim.keymap.set('n', '<leader>tt', ':split | terminal<CR>', { desc = 'Open terminal buffer as split)' })
+vim.keymap.set('t', '<leader>tt', '<C-\\><C-n>:bd!<CR>', { desc = 'Escape and delete terminal buffer' })
 
 -- Plugins
 vim.pack.add({
