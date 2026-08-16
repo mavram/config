@@ -17,6 +17,7 @@ export LESS='-FRX'
 export BAT_THEME='auto:system'
 export BAT_THEME_DARK='Catppuccin Mocha'
 export BAT_THEME_LIGHT='Catppuccin Latte'
+export NVIM_LOG_FILE=/dev/null
 
 # Aliases
 alias ll='ls -lahG'
