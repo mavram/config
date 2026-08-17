@@ -14,9 +14,6 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export LESSHISTFILE=-
 export PAGER=less
 export LESS='-FRX'
-export BAT_THEME='auto:system'
-export BAT_THEME_DARK='Catppuccin Mocha'
-export BAT_THEME_LIGHT='Catppuccin Latte'
 export NVIM_LOG_FILE=/dev/null
 
 # Aliases
@@ -73,8 +70,3 @@ fi
 
 # Prompt
 PROMPT='%F{244}%1~%f : '
-
-# Man pages
-if (($+commands[bat] && $+commands[col])); then
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-fi
