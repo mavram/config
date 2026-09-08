@@ -3,9 +3,9 @@
 	ci = commit
 	st = status
 [user]
-	name = mircea
-	email = mavram@gmail.com
-    signingkey = ~/.ssh/id_rsa.pub
+    name = mircea
+    email = mavram@gmail.com
+    signingkey = /Users/mircea/.ssh/github.pub
 [gpg]
     format = ssh
 [commit]
