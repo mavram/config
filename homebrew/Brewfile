@@ -42,3 +42,5 @@ brew "black"
 brew "gopls"
 # Autoformat shell script source code
 brew "shfmt"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
