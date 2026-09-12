@@ -5,10 +5,7 @@
 [user]
     name = mircea
     email = mavram@gmail.com
-    signingkey = /Users/mircea/.ssh/github.pub
-[gpg]
-    format = ssh
-[commit]
-	gpgsign = true
 [init]
 	defaultBranch = main
+[include]
+    path = ~/.config/git/config.local

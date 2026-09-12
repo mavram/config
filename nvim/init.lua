@@ -67,6 +67,7 @@ vim.keymap.set('t', '<leader>tt', '<C-\\><C-n>:bd!<CR>', { desc = 'Escape and de
 
 -- Plugins
 vim.pack.add({
+    { src = 'https://github.com/catppuccin/nvim' },
     { src = 'https://github.com/nvim-mini/mini.diff' },
     { src = 'https://github.com/nvim-mini/mini.icons' },
     { src = 'https://github.com/nvim-mini/mini-git' },

@@ -17,7 +17,11 @@ export LESS='-FRX'
 export NVIM_LOG_FILE=/dev/null
 
 # Aliases
-alias ll='ls -lahG'
+if [[ "$OSTYPE" == darwin* ]]; then
+    alias ll='ls -lahG'
+else
+    alias ll='ls -lah --color=auto'
+fi
 alias vi='nvim'
 
 # History
@@ -69,5 +73,9 @@ if (($+commands[fzf])); then
 fi
 
 # Prompt
-PUBLIC_IP="$(curl -fsS --max-time 2 https://api.ipify.org 2>/dev/null || print 'offline')"
+if (($+commands[curl])); then
+    PUBLIC_IP="$(curl -fsS --max-time 2 https://api.ipify.org 2>/dev/null || print 'offline')"
+else
+    PUBLIC_IP='offline'
+fi
 PROMPT="%F{39}${PUBLIC_IP}%f : %F{244}%1~%f : "
