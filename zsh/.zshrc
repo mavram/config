@@ -69,4 +69,5 @@ if (($+commands[fzf])); then
 fi
 
 # Prompt
-PROMPT='%F{244}%1~%f : '
+PUBLIC_IP="$(curl -fsS --max-time 2 https://api.ipify.org 2>/dev/null || print 'offline')"
+PROMPT="%F{39}${PUBLIC_IP}%f : %F{244}%1~%f : "
