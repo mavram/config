@@ -46,3 +46,5 @@ brew "shfmt"
 brew "jq"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Simple, modern, secure file encryption
+brew "age"
