@@ -10,4 +10,5 @@ trust.json.lock
 configstore
 htop
 glow
+stripe
 zsh/.zsh_sessions
